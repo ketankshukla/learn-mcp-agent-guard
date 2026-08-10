@@ -35,6 +35,26 @@ Do not ask me to approve things one at a time. Before your first build command, 
 - **Neon** installs from the Vercel Marketplace with `npx vercel install neon`. It does **not** ask for a card. `npx vercel env pull .env.local` gets you a pooled `DATABASE_URL`.
 - Never echo a secret into the transcript.
 
+### ⚠️ Two of my three existing MCP servers are locked. Check this before you design the toolbox.
+
+Verified just before this prompt was written:
+
+```
+https://learn-mcp-5-year-old.vercel.app/api/mcp        -> 200   (open)
+https://learn-mcp-agent-loop.vercel.app/api/toolbox    -> 401   (MCP_SHARED_TOKEN)
+https://learn-mcp-agent-guard.vercel.app/api/jar       -> 401   (MCP_SHARED_TOKEN)
+```
+
+**This exact trap has now bitten twice.** Project #3 planned to connect to project #2's toolbox and discovered mid-build that it returns 401, because project #2's own stage 9 had locked it. Do not rediscover it a third time — `curl` all three endpoints in your first five minutes.
+
+Your options, in the order I'd try them:
+
+1. **Pull the token.** Both are Vercel projects of mine: `npx vercel link --project learn-mcp-agent-guard && npx vercel env pull` gets you `MCP_SHARED_TOKEN`. The host reads it server-side and sends it as a bearer header; the browser never sees it. This is the right answer if project #4 should talk to project #3's durable jar.
+2. **Run project #3 locally.** With `MCP_SHARED_TOKEN` unset, its `/api/jar` runs open — that's deliberate, so a fresh clone needs no setup.
+3. **Use project #1's server**, which is open, plus MCP servers you build in this repo.
+
+**The transferable lesson, and put it in the README:** *your own past projects are third-party services.* Their auth, uptime and rate limits constrain you exactly as a stranger's would. `Promise.allSettled` in `buildToolbox` is what keeps that a design decision instead of an outage — keep it.
+
 ## What to build
 
 **Working name: `learn-mcp-agent-crew` — one agent that hires help.**
