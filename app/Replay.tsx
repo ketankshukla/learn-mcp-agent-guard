@@ -55,6 +55,7 @@ export default function Replay() {
   const [step, setStep] = useState(0);
   const [error, setError] = useState<string | null>(null);
 
+  /** Used by the refresh button. */
   const loadRuns = useCallback(async () => {
     try {
       const res = await fetch("/api/runs");
@@ -66,9 +67,31 @@ export default function Replay() {
     }
   }, []);
 
+  /**
+   * Load once on mount.
+   *
+   * The fetch lives inside the effect (rather than calling `loadRuns`) with a
+   * `cancelled` flag, so a component that unmounts mid-request doesn't try to
+   * set state afterwards. React's lint rule pushed for this shape and it is
+   * genuinely the right one — the old version had a real (if rare) bug.
+   */
   useEffect(() => {
-    loadRuns();
-  }, [loadRuns]);
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/runs");
+        const data = await res.json();
+        if (cancelled) return;
+        if (data.error) setError(data.error);
+        else setRuns(data.runs);
+      } catch (e) {
+        if (!cancelled) setError((e as Error).message);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   async function open(id: string) {
     setDetail(null);
