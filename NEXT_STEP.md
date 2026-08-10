@@ -152,9 +152,27 @@ Feeling that tradeoff in your hands is worth more than reading about it. Then de
 
 ---
 
+## Part 9 — Decisions, settled
+
+| Question | Decision | Why |
+|---|---|---|
+| **What** | **Sub-agents** — one orchestrator, several workers | It's the ceiling you actually hit, not a hypothetical one. And it's the first upgrade whose value is genuinely unmeasurable without the report card built in project #3. |
+| **Repo name** | **`learn-mcp-agent-crew`** | The series reads *loop → guard → crew*. "Crew" implies a team with a leader; "swarm" implies a leaderless mass, which is the wrong shape for an orchestrator. |
+| **Transport** | `runAgentLoop` called recursively, each sub-agent with its own `runId` and a new `parent_run_id` | You already have a function that takes messages in and yields events out. That *is* a sub-agent. Don't add a framework to discover that. |
+| **Approvals** | Always bubble to the top-level run | One human, one queue. Carry the child's reason up with it so the approver sees why, not just what. |
+| **Concurrency** | Hard cap, starting at **3** | Same logic as `MAX_ITERATIONS`. A parallel loop with a bug isn't a hang — it's a bill times N. |
+| **Model** | **`claude-sonnet-5`**, unchanged | Change one variable at a time. Score the delegation change first; *then* try a bigger model for the orchestrator and score that separately. |
+| **Done when** | The existing 6 evals don't regress, **and** 2–3 new cases pass that a single agent cannot | If you can't write those cases, you don't yet know what you're building. |
+
+> ⚠️ **The one thing to verify at build time, not now:** whether delegation actually wins. Run the suite with `delegate: false` and `delegate: true` and compare both the pass rate *and* the token cost. It is entirely possible that for tasks this size, one agent is better and cheaper — and finding that out with a number would be a genuinely valuable result, not a failed project. Do not build the whole thing before checking.
+
+---
+
 <div align="center">
 
 **[← Back to the README](README.md)** · **[How this was built →](BUILD_FROM_SCRATCH.md)** · **[project #2 →](https://github.com/ketankshukla/learn-mcp-agent-loop)**
+
+*Decisions settled. Next artifact: [PROJECT_4_KICKOFF_PROMPT.md](PROJECT_4_KICKOFF_PROMPT.md).*
 
 *The kitchen is the next thing. The report card is what will tell you if it worked.*
 

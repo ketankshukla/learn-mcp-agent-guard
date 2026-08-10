@@ -616,13 +616,38 @@ The `secret_code` collision is kept on purpose (Caesar on one server, Atbash on 
 
 ---
 
+## This is part of a series
+
+```mermaid
+flowchart LR
+    P1["🍪 #1<br/>learn-mcp-5-year-old<br/><i>an MCP SERVER</i><br/>offers tools, waits"]
+    P2["🔁 #2<br/>learn-mcp-agent-loop<br/><i>an MCP HOST</i><br/>picks the tools, runs the loop"]
+    P3["✋ <b>#3 — you are here</b><br/>learn-mcp-agent-guard<br/><i>the agent that ASKS FIRST</i><br/>approval gates, memory, evals"]
+
+    P1 --> P2 --> P3
+
+    style P1 fill:#1e293b,stroke:#38bdf8,color:#f8fafc
+    style P2 fill:#1e293b,stroke:#38bdf8,color:#f8fafc
+    style P3 fill:#78350f,stroke:#fbbf24,stroke-width:3px,color:#fef3c7
+```
+
+| | What it builds | Start here if… |
+|---|---|---|
+| **[#1 — the server](https://github.com/ketankshukla/learn-mcp-5-year-old)** | An MCP **server** | MCP itself is new to you |
+| **[#2 — the agent loop](https://github.com/ketankshukla/learn-mcp-agent-loop)** | An MCP **host** that owns the loop | You want to know what Claude Desktop was actually doing |
+| **#3** *(you are here)* | Approval gates, Postgres persistence, evals, replay | You want to give an agent a dangerous tool and sleep at night |
+
+Each one is a sequel that reuses the last one's code. This project copies project #2's `lib/` wholesale — the loop, the MCP client, the schema translation — and adds a handbrake to it.
+
+---
+
 ## The three documents
 
 | | For | Answers |
 |---|---|---|
 | **[README.md](README.md)** *(you are here)* | Understanding | *Why does an agent need permission? What is an eval? Why can't I trust the server?* |
 | **[BUILD_FROM_SCRATCH.md](BUILD_FROM_SCRATCH.md)** | Doing | *Which commands, in what order, and what breaks along the way?* |
-| **[NEXT_STEP.md](NEXT_STEP.md)** | Deciding | *What's still missing, and what should project #4 be?* |
+| **[NEXT_STEP.md](NEXT_STEP.md)** | Deciding | *What's still missing, and what should project #4 be?* → *(answered: sub-agents, as `learn-mcp-agent-crew`)* |
 
 ---
 
