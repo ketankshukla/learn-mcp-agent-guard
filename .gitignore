@@ -1,0 +1,61 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# scratch
+/mermaid-check
+
+# agent skill files installed as a side effect of `vercel install neon`.
+# Useful locally, but they are somebody else's docs — not part of this lesson.
+/.agents
+/.claude/skills
+/skills-lock.json
+
+# ---------------------------------------------------------------------------
+# env files — .env.local holds ANTHROPIC_API_KEY and DATABASE_URL and must
+# NEVER be committed.
+#
+# ⚠️ KEEP THIS BLOCK LAST. gitignore is order-sensitive (the last matching
+# pattern wins), and `vercel link` appends its own `.env*` and `.vercel` lines
+# to the end of this file. A trailing `.env*` would silently undo the negation
+# below and your `.env.example` would vanish from the repo again. After running
+# `vercel link`, check this file and delete the duplicates it added.
+# ---------------------------------------------------------------------------
+.env*
+# ...but the template, which holds no secrets, should be committed.
+!.env.example

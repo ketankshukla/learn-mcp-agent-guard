@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "cookie-jar-durable-local": {
+      "type": "http",
+      "url": "http://localhost:3000/api/jar"
+    },
+    "cookie-jar-durable-live": {
+      "type": "http",
+      "url": "https://learn-mcp-agent-guard.vercel.app/api/jar"
+    },
+    "cookie-jar-forgetful": {
+      "type": "http",
+      "url": "https://learn-mcp-5-year-old.vercel.app/api/mcp"
+    },
+    "agent-lab-toolbox": {
+      "type": "http",
+      "url": "https://learn-mcp-agent-loop.vercel.app/api/toolbox"
+    }
+  }
+}

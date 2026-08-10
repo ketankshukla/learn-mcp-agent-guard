@@ -1,0 +1,39 @@
+{
+  "name": "learn-mcp-agent-guard",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "db:init": "tsx --env-file-if-exists=.env.local scripts/00-init-db.ts",
+    "mcp:list": "tsx --env-file-if-exists=.env.local scripts/01-list-tools.ts",
+    "mcp:translate": "tsx --env-file-if-exists=.env.local scripts/02-translate-schemas.ts",
+    "agent": "tsx --env-file-if-exists=.env.local scripts/03-agent-loop.ts",
+    "approval": "tsx --env-file-if-exists=.env.local scripts/04-approval.ts",
+    "evals": "tsx --env-file-if-exists=.env.local scripts/05-evals.ts",
+    "replay": "tsx --env-file-if-exists=.env.local scripts/06-replay.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.116.0",
+    "@modelcontextprotocol/server": "^2.0.0",
+    "@neondatabase/serverless": "^1.1.0",
+    "mcp-handler": "^2.1.0",
+    "next": "16.3.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.0",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.12",
+    "typescript": "^5"
+  }
+}

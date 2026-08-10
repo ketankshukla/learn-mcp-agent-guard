@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "PowerShell(node:*)", "PowerShell(npm:*)", "PowerShell(npx:*)",
+      "PowerShell(git:*)", "PowerShell(gh:*)", "PowerShell(Get-ChildItem:*)",
+      "PowerShell(Test-Path:*)", "PowerShell(New-Item:*)", "PowerShell(Remove-Item:*)",
+      "PowerShell(Get-Content:*)", "PowerShell(Select-String:*)", "PowerShell(Start-Sleep:*)",
+      "PowerShell(Set-Content:*)", "PowerShell(Copy-Item:*)", "PowerShell(Get-NetTCPConnection:*)",
+      "PowerShell(taskkill:*)", "PowerShell(vercel:*)", "PowerShell(Move-Item:*)",
+      "PowerShell(Rename-Item:*)", "PowerShell(Measure-Object:*)", "PowerShell(Select-Object:*)",
+      "PowerShell(Where-Object:*)", "PowerShell(ForEach-Object:*)", "PowerShell(Invoke-RestMethod:*)",
+      "PowerShell(Invoke-WebRequest:*)", "PowerShell(Out-File:*)", "PowerShell(Add-Content:*)",
+      "PowerShell(Push-Location:*)", "PowerShell(Pop-Location:*)", "PowerShell(Set-Location:*)",
+      "PowerShell(tsc:*)", "PowerShell(mmdc:*)",
+      "Bash(node:*)", "Bash(npm:*)", "Bash(npx:*)", "Bash(git:*)",
+      "Bash(gh:*)", "Bash(ls:*)", "Bash(cat:*)", "Bash(curl:*)",
+      "Bash(grep:*)", "Bash(mkdir:*)", "Bash(cp:*)", "Bash(vercel:*)",
+      "Bash(mv:*)", "Bash(rm:*)", "Bash(find:*)", "Bash(sed:*)",
+      "Bash(head:*)", "Bash(tail:*)", "Bash(echo:*)", "Bash(jq:*)",
+      "Read(E:\\learn-mcp-agent-guard\\**)",
+      "Write(E:\\learn-mcp-agent-guard\\**)",
+      "Edit(E:\\learn-mcp-agent-guard\\**)",
+      "Glob(E:\\learn-mcp-agent-guard\\**)",
+      "Grep(E:\\learn-mcp-agent-guard\\**)",
+      "Read(C:\\Users\\ketan\\AppData\\Local\\Temp\\claude\\**)",
+      "Write(C:\\Users\\ketan\\AppData\\Local\\Temp\\claude\\**)",
+      "Edit(C:\\Users\\ketan\\AppData\\Local\\Temp\\claude\\**)",
+      "Glob(C:\\Users\\ketan\\AppData\\Local\\Temp\\claude\\**)",
+      "Grep(C:\\Users\\ketan\\AppData\\Local\\Temp\\claude\\**)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:docs.claude.com)",
+      "WebFetch(domain:neon.tech)",
+      "WebFetch(domain:vercel.com)"
+    ]
+  }
+}
