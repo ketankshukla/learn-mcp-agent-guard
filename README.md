@@ -623,12 +623,16 @@ flowchart LR
     P1["🍪 #1<br/>learn-mcp-5-year-old<br/><i>an MCP SERVER</i><br/>offers tools, waits"]
     P2["🔁 #2<br/>learn-mcp-agent-loop<br/><i>an MCP HOST</i><br/>picks the tools, runs the loop"]
     P3["✋ <b>#3 — you are here</b><br/>learn-mcp-agent-guard<br/><i>the agent that ASKS FIRST</i><br/>approval gates, memory, evals"]
+    P4["👥 #4<br/>learn-mcp-agent-crew<br/><i>one agent that HIRES HELP</i><br/>sub-agents, one queue"]
+    P5["💸 #5<br/>learn-mcp-agent-ledger<br/><i>the host that OWNS THE WALLET</i><br/>sampling, a spend gate, a ledger"]
 
-    P1 --> P2 --> P3
+    P1 --> P2 --> P3 --> P4 --> P5
 
     style P1 fill:#1e293b,stroke:#38bdf8,color:#f8fafc
     style P2 fill:#1e293b,stroke:#38bdf8,color:#f8fafc
     style P3 fill:#78350f,stroke:#fbbf24,stroke-width:3px,color:#fef3c7
+    style P4 fill:#1e293b,stroke:#38bdf8,color:#f8fafc
+    style P5 fill:#052e16,stroke:#4ade80,color:#dcfce7
 ```
 
 | | What it builds | Start here if… |
@@ -636,8 +640,12 @@ flowchart LR
 | **[#1 — the server](https://github.com/ketankshukla/learn-mcp-5-year-old)** | An MCP **server** | MCP itself is new to you |
 | **[#2 — the agent loop](https://github.com/ketankshukla/learn-mcp-agent-loop)** | An MCP **host** that owns the loop | You want to know what Claude Desktop was actually doing |
 | **#3** *(you are here)* | Approval gates, Postgres persistence, evals, replay | You want to give an agent a dangerous tool and sleep at night |
+| **[#4 — the crew](https://github.com/ketankshukla/learn-mcp-agent-crew)** | Sub-agents, one approval queue, cost measurement | Your agent keeps running out of room on big jobs |
+| **[#5 — the ledger](https://github.com/ketankshukla/learn-mcp-agent-ledger)** | Sampling, a spend gate, a ledger | Something you connected can spend your money |
 
 Each one is a sequel that reuses the last one's code. This project copies project #2's `lib/` wholesale — the loop, the MCP client, the schema translation — and adds a handbrake to it.
+
+> ✋ **This project's thesis gets a sharper sequel.** *"A hint from the other side of a network boundary is not a permission model"* is about a server telling you a tool is safe. [Project #5](https://github.com/ketankshukla/learn-mcp-agent-ledger) points it the other way: state *you* minted, handed across that boundary, and got back is not your state either — and by then the other side can spend your money.
 
 ---
 
